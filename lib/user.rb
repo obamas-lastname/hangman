@@ -1,4 +1,4 @@
-
+require_relative './colored-master/lib/colored.rb'
 class User
     attr_accessor :shown_word
     def initialize
@@ -7,7 +7,6 @@ class User
     end
 
     def start
-        puts "Welcome to Hangman! You have to guess a given word."
         puts @shown_word
     end
 
@@ -28,7 +27,7 @@ class User
                 @shown_word[i] = char
             end
         else
-            puts "The given letter does not exist in the word"
+            puts "The given letter does not exist in the word".yellow
         end
         @shown_word
     end
