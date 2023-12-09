@@ -1,5 +1,5 @@
 require_relative './user.rb'
-
+require_relative './colored-master/lib/colored.rb'
 class HangmanLogic
     attr_accessor :word, :won, :matched, :guessed, :tries
     def initialize
@@ -40,11 +40,11 @@ class HangmanLogic
     
 
     def round
-        puts "Letters already guessed:"
-        puts @guessed.join(" ")
+        puts "Letters already guessed:".blue
+        puts @guessed.join(" ").blue
         puts "You have #{7-@tries} wrong guesses left"
         guessed_char = User.get_guess
-        puts "++++++++++++++++++++++++++++++++++++"
+        puts "++++++++++++++++++++++++++++++++++++++++++++".white_on_blue
         if guessed_char != "save"
             @guessed << guessed_char
             indices = guess(guessed_char)
