@@ -1,12 +1,9 @@
 
 class User
     attr_accessor :shown_word
-    def initialize(word)
+    def initialize
         @shown_word = String.new
-        for i in 0..word.length-1
-            @shown_word[i]='_'
-        end
-        puts @shown_word
+        #puts @shown_word
     end
 
     def start
@@ -14,8 +11,14 @@ class User
         puts @shown_word
     end
 
+    def initword(word)
+        for i in 0..word.length-1
+            @shown_word[i]='_'
+        end
+    end
+
     def self.get_guess
-        puts "Guess a letter!"
+        puts "Guess a letter or type 'save' to save game"
         gets.chomp
     end
 
@@ -27,7 +30,7 @@ class User
         else
             puts "The given letter does not exist in the word"
         end
-        puts @shown_word
+        @shown_word
     end
 
 end
