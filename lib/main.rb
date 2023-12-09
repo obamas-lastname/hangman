@@ -1,5 +1,7 @@
 require_relative './game_logic.rb'
 require_relative './user.rb'
+require_relative './gui.rb'
+require_relative './colored-master/lib/colored.rb'
 
 def load_game(game, user)
     puts "Enter name for game you want to load from the following:"
@@ -14,10 +16,12 @@ def load_game(game, user)
 end
 
 def menu
-    puts "Type 1 to open a saved game, type 2 to start a new one. The game auto-saves. Starting a new game will overwrite the last"
+    puts "Welcome to Hangman! You have to guess a given word."
+    puts "Type 1 to open a saved game, type 2 to start a new one."
     gets.chomp.to_i
 end
 
+GUI.logo
 game = HangmanLogic.new
 user = User.new
 
@@ -37,7 +41,7 @@ while game.tries <= 7
         break
     end
     word = user.show(arr[0], arr[1])
-    puts word
+    puts word.red
     if game.won
         puts "Congratulations! You guessed the word"
         break
